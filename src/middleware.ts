@@ -5,7 +5,7 @@ const authRoutes = ["/signin", "/verify-request"];
 
 export default auth((request) => {
   if (!request.auth && !authRoutes.includes(request.nextUrl.pathname)) {
-    return Response.redirect(new URL("/auth/signin", request.nextUrl.origin));
+    return Response.redirect(new URL("/signin", request.nextUrl.origin));
   }
 
   if (request.auth && authRoutes.includes(request.nextUrl.pathname)) {
