@@ -15,4 +15,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       from: process.env.AUTH_RESEND_SEND_FROM,
     }),
   ],
+  callbacks: {
+    authorized: async ({ auth }) => {
+      return !!auth;
+    },
+  },
+  pages: {
+    signIn: "/signin",
+  },
 });
