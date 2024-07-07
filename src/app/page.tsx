@@ -1,5 +1,4 @@
-import { auth } from "@/auth";
-import { SignOut } from "@/components/auth/buttons";
+import { auth, signOut } from "@/auth";
 
 const Home = async () => {
   const session = await auth();
@@ -7,8 +6,15 @@ const Home = async () => {
   return (
     <>
       <h1>Remind Me</h1>
-      Hello {!!session!.user && session!.user.email}!
-      <SignOut />
+      <p> Hello {!!session!.user && session!.user.email}!</p>
+      <form
+        action={async () => {
+          "use server";
+          await signOut();
+        }}
+      >
+        <button type="submit">Signout</button>
+      </form>
     </>
   );
 };
