@@ -1,12 +1,12 @@
-import { auth, signOut } from "@/auth";
+import { signOut } from "@/auth";
+import Reminders from "./reminders";
 
 const Home = async () => {
-  const session = await auth();
-
   return (
     <>
       <h1>Remind Me</h1>
-      <p> Hello {!!session!.user && session!.user.email}!</p>
+      <Reminders />
+
       <form
         action={async () => {
           "use server";
